@@ -37,7 +37,7 @@ def entrada():
 # Lo que queremos que haga al salir, enseñando los dados no repetidos que han salido
 def salir(caja):
     lista_ordenada = sorted(list(caja))
-    #
+    # Enseñamos por pantalla la lista ordenada
     print("Los valores de los dados lanzados fueron: ", ", ".join(str(x) for x in lista_ordenada))
     return
 
@@ -50,7 +50,7 @@ def menu():
 
     # Variables que necesitaremos
     estado = True
-    resuldados = set({})
+    resuldados = set()
 
     # Bucle principal
     while estado:
@@ -73,4 +73,5 @@ def menu():
 
 
 if __name__ == "__main__":
+    # Llamamos a la función menu()
     menu()
