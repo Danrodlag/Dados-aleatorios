@@ -24,24 +24,20 @@ def entrada():
         return "Rep"
 
 
-def salir(lista):
-    set_lista = set(lista)
-    lista_ordenada = sorted(lista)
-    lista_porc = []
-    for i in range(1, 7):
-        lista_porc.append(lista_ordenada.count(i))
-    for i, elem in enumerate(lista_porc):
-        lista_porc[i] = (elem*100)/len(lista_ordenada)
+def salir(set_lista):
+    lista_ordenada = sorted(list(set_lista))
+
     print("Los valores de los dados lanzados fueron: ", ", ".join(str(x) for x in list(set_lista)))
     print("Los porcentajes de salida son: ", "% ".join(str(x) for x in lista_porc), end="%")
     return
 
 
-
 def menu():
     print("\033[4;0m" + "PROGRAMA GENERA DADOS")
+    with open("resuldados.txt", "w", encoding="utf-8") as fichero:
+
     estado = True
-    resuldados = []
+    resuldados = set()
     while estado:
         num_rep = entrada()
         if num_rep == 0:
@@ -50,9 +46,12 @@ def menu():
             continue
         elif num_rep == "Rep":
             continue
+
         for i in range(num_rep):
             resuldado = dado(i)
-            resuldados.append(resuldado)
+            resuldados.add(resuldado)
+            with open("resuldados.txt", "a", encoding="utf-8") as fichero:
+                fichero.write(str(resuldado))
 
 
 if __name__ == "__main__":
